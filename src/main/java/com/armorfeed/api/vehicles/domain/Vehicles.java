@@ -1,12 +1,10 @@
 package com.armorfeed.api.vehicles.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Generated;
 import lombok.Getter;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @AllArgsConstructor
 @Getter
@@ -15,4 +13,7 @@ public class Vehicles {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name="model")
+    private String model;
 }
