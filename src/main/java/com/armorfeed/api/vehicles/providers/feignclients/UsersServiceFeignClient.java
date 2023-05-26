@@ -10,4 +10,9 @@ import com.armorfeed.api.vehicles.providers.feignclients.dtos.AuthTokenResponse;
 public interface UsersServiceFeignClient {
     @GetMapping("/api/v1/users/auth/validate-token/{token}")
     public AuthTokenResponse validateToken(@PathVariable("token") String token);
+
+    @GetMapping("/api/v1/users/auth/validate-enterprise/{enterpriseId}")
+    public boolean validateEnterprise(@PathVariable("enterpriseId") Long enterpriseId);
+
+
 }
