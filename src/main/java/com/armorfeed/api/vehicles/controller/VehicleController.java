@@ -13,7 +13,6 @@ import java.util.List;
 
 public class VehicleController {
 
-
     @Autowired
     VehiclesService vehiclesService;
 
