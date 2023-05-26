@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.armorfeed.api.vehicles.providers.feignclients.dtos.AuthTokenResponse;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @FeignClient(value = "users-service", url = "http://localhost:6719")
 public interface UsersServiceFeignClient {
@@ -14,5 +15,6 @@ public interface UsersServiceFeignClient {
     @GetMapping("/api/v1/users/auth/validate-enterprise/{enterpriseId}")
     public boolean validateEnterprise(@PathVariable("enterpriseId") Long enterpriseId);
 
-
+    @PutMapping("/api/v1/users/auth/validate-enterprise/{enterpriseId}/validate-vehicles/{vehiclesId}")
+    public boolean validateVehicleforEnterprise(@PathVariable("enterpriseId") Long enterpriseId, @PathVariable("vehiclesId") Long vehiclesId);
 }
