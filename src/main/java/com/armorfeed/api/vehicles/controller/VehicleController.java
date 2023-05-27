@@ -2,13 +2,18 @@ package com.armorfeed.api.vehicles.controller;
 
 
 import com.armorfeed.api.vehicles.domain.entities.Vehicle;
+
+import com.armorfeed.api.vehicles.resources.UpdateResource;
+
 import com.armorfeed.api.vehicles.providers.feignclients.dtos.UserDetailsImpl;
+
 import com.armorfeed.api.vehicles.services.VehiclesService;
 import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 //import org.springframework.security.core.Authentication;
 import org.springframework.http.HttpStatus;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,6 +37,10 @@ public class VehicleController {
         return vehicle;
     }
 
+    @PutMapping("{id}")
+    public ResponseEntity<?> updateVehicle(@PathVariable Long vehicleId, @RequestBody UpdateResource request) {
+        return vehiclesService.updateVehicle(request.getEnterpriseId(), vehicleId, request);
+    }
     @DeleteMapping("{vehicleId}")
     public ResponseEntity<String> Delete(@PathVariable("vehicleId") Long vehicleId){
         return vehiclesService.deleteVehicle(vehicleId);
@@ -39,5 +48,6 @@ public class VehicleController {
     @DeleteMapping("auth")
     public String auth() {
         return "auth";
+
     }
 }
