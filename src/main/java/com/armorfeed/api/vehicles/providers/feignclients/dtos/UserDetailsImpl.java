@@ -3,8 +3,8 @@ package com.armorfeed.api.vehicles.providers.feignclients.dtos;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+//import org.springframework.security.core.GrantedAuthority;
+//import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.util.Collection;
 import java.util.List;
@@ -23,7 +23,7 @@ public class UserDetailsImpl {
     @JsonIgnore
     private String password;
 
-    private Collection<? extends GrantedAuthority> authorities;
+    //private Collection<? extends GrantedAuthority> authorities;
 
 
     public boolean isAccountNonExpired(){

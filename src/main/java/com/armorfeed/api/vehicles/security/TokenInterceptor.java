@@ -9,7 +9,6 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import com.armorfeed.api.vehicles.providers.feignclients.UsersServiceFeignClient;
 import com.armorfeed.api.vehicles.providers.feignclients.dtos.AuthTokenResponse;
 
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class TokenInterceptor implements HandlerInterceptor {
@@ -46,7 +45,8 @@ public class TokenInterceptor implements HandlerInterceptor {
             log.info("Token is {}", token);
             AuthTokenResponse authTokenResponse = usersServiceFeignClient.validateToken(token);
             log.info("Token is valid is {} and message is {}", authTokenResponse.isValidToken(), authTokenResponse.getMessage());
-            return authTokenResponse.isValidToken() || authTokenResponse.getMessage().equals(AuthTokenMessage.OK.getMessage());
+            boolean siPasa = authTokenResponse.getMessage().equals(AuthTokenMessage.OK.getMessage());
+            return authTokenResponse.isValidToken() || siPasa;
         }
         return false;
     }

@@ -7,7 +7,7 @@ import com.armorfeed.api.vehicles.services.VehiclesService;
 import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
+//import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,12 +31,12 @@ public class VehicleController {
         return vehicle;
     }
 
-    @DeleteMapping
-    public ResponseEntity<String> Delete( Long vehicleId){
+    @DeleteMapping("{vehicleId}")
+    public ResponseEntity<String> Delete(@PathVariable("vehicleId") Long vehicleId){
         return vehiclesService.deleteVehicle(vehicleId);
     }
-    @DeleteMapping
-    public String getAuth() {
-        return "Auth";
+    @DeleteMapping("auth")
+    public String auth() {
+        return "auth";
     }
 }
