@@ -35,4 +35,8 @@ public class VehicleController {
     public ResponseEntity<String> Delete( Long vehicleId){
         return vehiclesService.deleteVehicle(vehicleId);
     }
+    @DeleteMapping
+    public String getAuth() {
+        return "Auth";
+    }
 }
