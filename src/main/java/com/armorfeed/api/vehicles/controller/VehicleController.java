@@ -2,8 +2,12 @@ package com.armorfeed.api.vehicles.controller;
 
 
 import com.armorfeed.api.vehicles.domain.entities.Vehicle;
+import com.armorfeed.api.vehicles.providers.feignclients.dtos.UserDetailsImpl;
 import com.armorfeed.api.vehicles.services.VehiclesService;
+import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,5 +29,10 @@ public class VehicleController {
     public Vehicle Save(@RequestBody Vehicle vehicle){
         vehiclesService.Save(vehicle);
         return vehicle;
+    }
+
+    @DeleteMapping
+    public ResponseEntity<String> Delete( Long vehicleId){
+        return vehiclesService.deleteVehicle(vehicleId);
     }
 }

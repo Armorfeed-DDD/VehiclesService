@@ -2,12 +2,14 @@ package com.armorfeed.api.vehicles.security;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import com.armorfeed.api.vehicles.providers.feignclients.UsersServiceFeignClient;
 import com.armorfeed.api.vehicles.providers.feignclients.dtos.AuthTokenResponse;
 
+@Slf4j
 public class TokenInterceptor implements HandlerInterceptor {
 
     @Autowired
@@ -25,6 +27,7 @@ public class TokenInterceptor implements HandlerInterceptor {
 
     private boolean isValidToken(HttpServletRequest request) {
         String authorizationHeader = request.getHeader("Authorization");
+        log.info("AuthorizationHeader: {}",authorizationHeader);
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             String token = authorizationHeader.substring(7);
             AuthTokenResponse authTokenResponse = usersServiceFeignClient.validateToken(token);
