@@ -45,8 +45,7 @@ public class TokenInterceptor implements HandlerInterceptor {
             log.info("Token is {}", token);
             AuthTokenResponse authTokenResponse = usersServiceFeignClient.validateToken(token);
             log.info("Token is valid is {} and message is {}", authTokenResponse.isValidToken(), authTokenResponse.getMessage());
-            boolean siPasa = authTokenResponse.getMessage().equals(AuthTokenMessage.OK.getMessage());
-            return authTokenResponse.isValidToken() || siPasa;
+            return authTokenResponse.isValidToken() || authTokenResponse.getMessage().equals(AuthTokenMessage.OK.getMessage());
         }
         return false;
     }
