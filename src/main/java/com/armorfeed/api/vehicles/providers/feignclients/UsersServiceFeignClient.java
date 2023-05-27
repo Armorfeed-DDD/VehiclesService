@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.armorfeed.api.vehicles.providers.feignclients.dtos.AuthTokenResponse;
 import org.springframework.web.bind.annotation.PutMapping;
 
-@FeignClient(value = "users-service", url = "http://localhost:6719")
+@FeignClient(value = "users-service", url = "http://localhost:8090")
 public interface UsersServiceFeignClient {
     @GetMapping("/api/v1/users/auth/validate-token/{token}")
     public AuthTokenResponse validateToken(@PathVariable("token") String token);
