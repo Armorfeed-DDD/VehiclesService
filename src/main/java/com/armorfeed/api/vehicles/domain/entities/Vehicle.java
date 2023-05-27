@@ -41,7 +41,4 @@ public class Vehicle implements Serializable {
     @Column(nullable = false)
     private Long enterpriseId;
 
-
-
-
 }
