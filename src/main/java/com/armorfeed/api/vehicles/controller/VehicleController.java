@@ -4,6 +4,7 @@ package com.armorfeed.api.vehicles.controller;
 import com.armorfeed.api.vehicles.domain.entities.Vehicle;
 import com.armorfeed.api.vehicles.services.VehiclesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,8 +22,10 @@ public class VehicleController {
 
 
     @PostMapping
-    public Vehicle Save(@RequestBody Vehicle vehicle){
+    @ResponseStatus(HttpStatus.CREATED)
+    public Vehicle saveVehicle(@RequestBody Vehicle vehicle){
         vehiclesService.Save(vehicle);
         return vehicle;
     }
+
 }
