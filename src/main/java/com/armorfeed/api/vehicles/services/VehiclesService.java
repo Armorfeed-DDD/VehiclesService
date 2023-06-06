@@ -4,15 +4,12 @@ import com.armorfeed.api.vehicles.domain.entities.Vehicle;
 import com.armorfeed.api.vehicles.repositories.VehicleRepository;
 import com.armorfeed.api.vehicles.resources.UpdateResource;
 import com.armorfeed.api.vehicles.shared.EnhancedModelMapper;
-import org.bouncycastle.asn1.ocsp.ResponderID;
-import org.hibernate.mapping.Constraint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class VehiclesService {

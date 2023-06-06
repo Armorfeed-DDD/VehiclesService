@@ -46,7 +46,7 @@ public class VehicleController {
         return vehiclesService.deleteVehicle(vehicleId);
     }
     
-    @GetMapping("validate/{vehicleId}")
+    @GetMapping("/validate/{vehicleId}")
     public boolean isValidVehicleId(@PathVariable("vehicleId") Long vehicleId) {
         return this.isValidVehicleId(vehicleId);
     }
