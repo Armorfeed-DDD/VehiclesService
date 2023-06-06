@@ -45,9 +45,9 @@ public class VehicleController {
     public ResponseEntity<String> Delete(@PathVariable("vehicleId") Long vehicleId){
         return vehiclesService.deleteVehicle(vehicleId);
     }
-    @DeleteMapping("auth")
-    public String auth() {
-        return "auth";
-
+    
+    @GetMapping("validate/{vehicleId}")
+    public boolean isValidVehicleId(@PathVariable("vehicleId") Long vehicleId) {
+        return this.isValidVehicleId(vehicleId);
     }
 }

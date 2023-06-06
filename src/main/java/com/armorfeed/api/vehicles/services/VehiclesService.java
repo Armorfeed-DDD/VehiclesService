@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class VehiclesService {
@@ -50,6 +51,10 @@ public class VehiclesService {
         else{
             return ResponseEntity.notFound().build();
         }
+    }
+
+    public boolean isValidVehicleId(Long vehicleId) {
+       return vehicleRepository.existsById(vehicleId);
     }
 
 }
