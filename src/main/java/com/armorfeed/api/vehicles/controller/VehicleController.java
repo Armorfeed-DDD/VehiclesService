@@ -48,6 +48,6 @@ public class VehicleController {
     
     @GetMapping("/validate/{vehicleId}")
     public boolean isValidVehicleId(@PathVariable("vehicleId") Long vehicleId) {
-        return this.isValidVehicleId(vehicleId);
+        return vehiclesService.isValidVehicleId(vehicleId);
     }
 }
