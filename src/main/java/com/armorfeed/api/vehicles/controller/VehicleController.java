@@ -5,10 +5,7 @@ import com.armorfeed.api.vehicles.domain.entities.Vehicle;
 
 import com.armorfeed.api.vehicles.resources.UpdateResource;
 
-import com.armorfeed.api.vehicles.providers.feignclients.dtos.UserDetailsImpl;
-
 import com.armorfeed.api.vehicles.services.VehiclesService;
-import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 //import org.springframework.security.core.Authentication;
