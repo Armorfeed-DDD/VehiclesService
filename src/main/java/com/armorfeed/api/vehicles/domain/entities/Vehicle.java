@@ -1,7 +1,6 @@
 package com.armorfeed.api.vehicles.domain.entities;
 
 import lombok.*;
-import org.hibernate.annotations.MetaValue;
 
 import javax.persistence.*;
 import java.io.Serializable;
