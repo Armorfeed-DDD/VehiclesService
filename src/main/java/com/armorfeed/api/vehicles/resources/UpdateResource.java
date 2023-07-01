@@ -16,28 +16,28 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UpdateResource {
-    @NotNull
-    @NotBlank
-    @NotEmpty
+    @NotNull(message = "Brand must not be null")
+    @NotBlank(message = "Brand must not be blank")
+    @NotEmpty(message = "Brand must not be empty")
     private String brand;
 
-    @NotNull
-    @NotBlank
-    @NotEmpty
+    @NotNull(message = "License plate must not be null")
+    @NotBlank(message = "License plate must not be blank")
+    @NotEmpty(message = "License plate must not be empty")
     private String license_plate;
 
-    @NotNull
-    @NotBlank
-    @NotEmpty
+    @NotNull(message = "Model must not be null")
+    @NotBlank(message = "Model must not be blank")
+    @NotEmpty(message = "Model must not be empty")
     private String model;
 
     @NotNull
     private Long year;
 
-    @NotNull
-    @NotBlank
-    @NotEmpty
-    private String Vehicle_type;
+    @NotNull(message = "Vehicle Type must not be null")
+    @NotBlank(message = "Vehicle Type must not be blank")
+    @NotEmpty(message = "Vehicle Type must not be empty")
+    private String vehicle_type;
 
     @NotNull
     private Date maintenance_date;

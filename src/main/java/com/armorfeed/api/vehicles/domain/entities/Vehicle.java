@@ -32,7 +32,7 @@ public class Vehicle implements Serializable {
     private Long year;
 
     @Column(nullable = false)
-    private String Vehicle_type;
+    private String vehicle_type;
 
     @Column(nullable = false)
     private Date maintenance_date;
