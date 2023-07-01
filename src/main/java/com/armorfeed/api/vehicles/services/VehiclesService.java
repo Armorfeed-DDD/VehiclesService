@@ -1,9 +1,13 @@
 package com.armorfeed.api.vehicles.services;
 
 import com.armorfeed.api.vehicles.domain.entities.Vehicle;
+import com.armorfeed.api.vehicles.providers.feignclients.UsersServiceFeignClient;
 import com.armorfeed.api.vehicles.repositories.VehicleRepository;
+import com.armorfeed.api.vehicles.resources.CreateVehicleResource;
 import com.armorfeed.api.vehicles.resources.UpdateResource;
+import com.armorfeed.api.vehicles.resources.VehiclesResource;
 import com.armorfeed.api.vehicles.shared.EnhancedModelMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,16 +21,26 @@ public class VehiclesService {
     @Autowired
     VehicleRepository vehicleRepository;
 
-
-
     @Autowired
     EnhancedModelMapper enhancedModelMapper;
+
+    @Autowired
+    UsersServiceFeignClient usersServiceFeignClient;
 
 
     public List<Vehicle> getVehicles(){ return vehicleRepository.findAll();}
 
-    public void Save(Vehicle vehicle){
-        vehicleRepository.save(vehicle);
+    public ResponseEntity<?> save(CreateVehicleResource createVehicleResource){
+        if(usersServiceFeignClient.validateEnterpriseId(createVehicleResource.getEnterpriseId()) == false) {
+            return ResponseEntity.badRequest()
+            .body(
+                String.format("Enterprise with id %d does not exist", 
+                createVehicleResource.getEnterpriseId())
+            );
+        }
+        Vehicle newVehicle = enhancedModelMapper.map(createVehicleResource, Vehicle.class);
+        Vehicle vehicleCreated = vehicleRepository.save(newVehicle);
+        return ResponseEntity.ok().body(vehicleCreated);
     }
 
     public ResponseEntity<String> deleteVehicle(Long vehicleId){
@@ -48,6 +62,12 @@ public class VehiclesService {
         else{
             return ResponseEntity.notFound().build();
         }
+    }
+
+    public List<VehiclesResource> getAllByEnterpriseId(Long enterpriseId) {
+        return enhancedModelMapper.mapList(
+            vehicleRepository.findByEnterpriseId(enterpriseId),
+            VehiclesResource.class);
     }
 
     public boolean isValidVehicleId(Long vehicleId) {

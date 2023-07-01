@@ -18,6 +18,4 @@ public class VehiclesResource {
     private String vehicle_type;
     private Date maintenance_date;
     private Long enterpriseId;
-
-
 }
